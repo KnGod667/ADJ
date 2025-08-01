@@ -1,0 +1,86 @@
+[gd_scene load_steps=9 format=3 uid="uid://8wnu373hpjxf"]
+
+[ext_resource type="Script" path="res://Scripts/Camera/debug_camera_controller.gd" id="1_50ct6"]
+[ext_resource type="Material" uid="uid://dfxpeclc4r1l5" path="res://resources/Sky_material.tres" id="2_w5c3y"]
+[ext_resource type="Script" path="res://Scripts/world_environment.gd" id="4_4edhu"]
+[ext_resource type="PackedScene" uid="uid://ivqk8dplb7o7" path="res://Scenes/Terrain Handler.tscn" id="4_hb2xm"]
+[ext_resource type="PackedScene" uid="uid://c1x4nqpk0fqkh" path="res://Scenes/UI/UI.tscn" id="5_ak5v8"]
+[ext_resource type="Script" path="res://Scripts/canvas_layer.gd" id="5_x033f"]
+
+[sub_resource type="Sky" id="Sky_8pr8v"]
+sky_material = ExtResource("2_w5c3y")
+
+[sub_resource type="Environment" id="Environment_buypi"]
+background_mode = 2
+background_color = Color(0.427355, 0.338759, 0.239741, 1)
+sky = SubResource("Sky_8pr8v")
+ambient_light_source = 2
+ambient_light_color = Color(1, 1, 1, 1)
+ambient_light_energy = 0.1
+
+[node name="Node3D" type="Node3D"]
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(0.999994, 0.000286019, 0.00347891, 0, 0.996637, -0.0819385, -0.00349065, 0.081938, 0.996631, 0, 1.903, 0)
+script = ExtResource("1_50ct6")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_buypi")
+script = ExtResource("4_4edhu")
+
+[node name="Sun" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.855083, 0.172521, 0.488948, 0.36246, -0.87321, -0.325771, 0.370748, 0.455786, -0.809201, 4.03407, 5.54587, 2.68282)
+light_color = Color(0.997727, 0.913765, 0.363679, 1)
+light_angular_distance = 0.5
+
+[node name="Moon" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.620869, 0.364952, -0.693781, -0.782354, -0.232653, 0.57775, 0.0494402, 0.901489, 0.429969, 0, 5, -1)
+light_energy = 0.2
+light_indirect_energy = 0.1
+
+[node name="TerrainHandler" parent="." node_paths=PackedStringArray("remoteTransform") instance=ExtResource("4_hb2xm")]
+remoteTransform = NodePath("../Camera3D")
+generationRadius = 0
+detail = 250
+noiseSeed = 156129
+noiseScale = 2.0
+gradientRotation = 41.295
+lacunarity = 2.0
+angularVariance = Vector2(10.525, -10.95)
+noiseRotation = 11.435
+octaves = 6
+slopeRange = Vector2(0.28, 1)
+lowSlopeColor = Color(0.994071, 0.745382, 0.845383, 1)
+highSlopeColor = Color(0.406032, 0.205523, 4.81308e-08, 1)
+RaymarchedShadows = true
+specularPower = 240.0
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+script = ExtResource("5_x033f")
+
+[node name="PanelContainer" parent="CanvasLayer" instance=ExtResource("5_ak5v8")]
+anchors_preset = 11
+anchor_left = 1.0
+offset_left = -411.0
+offset_right = -69.0
+offset_bottom = 4.0
+grow_horizontal = 0
+scale = Vector2(1.2, 1)
+size_flags_horizontal = 2
+size_flags_vertical = 2
+
+[node name="Button" type="Button" parent="CanvasLayer"]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -38.0
+offset_top = -31.0
+offset_right = -11.0
+grow_horizontal = 0
+grow_vertical = 0
+text = " X "
+metadata/_edit_use_anchors_ = true
+
+[connection signal="pressed" from="CanvasLayer/Button" to="CanvasLayer" method="_on_button_pressed"]

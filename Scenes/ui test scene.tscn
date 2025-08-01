@@ -1,0 +1,41 @@
+[gd_scene load_steps=4 format=3 uid="uid://be0qkox35fs3j"]
+
+[ext_resource type="PackedScene" uid="uid://c1x4nqpk0fqkh" path="res://Scenes/UI/UI.tscn" id="1_jqesv"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_g0oyt"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_ew8vy"]
+noise = SubResource("FastNoiseLite_g0oyt")
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Camera2D"]
+
+[node name="AspectRatioContainer" type="AspectRatioContainer" parent="Camera2D/CanvasLayer"]
+anchors_preset = -1
+anchor_left = 1.0
+anchor_top = 0.20679
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -343.0
+offset_top = -132.0
+offset_bottom = -166.0
+grow_horizontal = 0
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+alignment_horizontal = 0
+alignment_vertical = 0
+metadata/_edit_use_anchors_ = true
+
+[node name="Ui" parent="Camera2D/CanvasLayer/AspectRatioContainer" instance=ExtResource("1_jqesv")]
+layout_mode = 2
+size_flags_horizontal = 1
+size_flags_vertical = 1
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = SubResource("NoiseTexture2D_ew8vy")

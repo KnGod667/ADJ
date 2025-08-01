@@ -1,0 +1,1 @@
+class_name TerrainGeneratorShape extends Shape3D

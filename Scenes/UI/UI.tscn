@@ -1,0 +1,309 @@
+[gd_scene load_steps=4 format=3 uid="uid://c1x4nqpk0fqkh"]
+
+[ext_resource type="Script" path="res://Scripts/ui.gd" id="1_636u5"]
+[ext_resource type="PackedScene" uid="uid://b7qbo6hssfjxh" path="res://Scenes/UI/Editor element.tscn" id="1_s86y4"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s86y4"]
+bg_color = Color(0.607843, 0, 0, 0.156863)
+
+[node name="PanelContainer" type="PanelContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_s86y4")
+
+[node name="UI" type="ScrollContainer" parent="."]
+layout_mode = 2
+vertical_scroll_mode = 2
+script = ExtResource("1_636u5")
+
+[node name="TabContainer" type="TabContainer" parent="UI"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+current_tab = 0
+
+[node name="Mesh" type="VBoxContainer" parent="UI/TabContainer"]
+layout_mode = 2
+metadata/_tab_index = 0
+
+[node name="GenerationRadius" parent="UI/TabContainer/Mesh" instance=ExtResource("1_s86y4")]
+layout_mode = 2
+tooltip_text = "instantiates meshes around the center. "
+propertyName = "Generation Radius"
+tooltipText = "instantiates meshes around the center. "
+
+[node name="HSeparator" type="HSeparator" parent="UI/TabContainer/Mesh"]
+layout_mode = 2
+
+[node name="MeshSize" parent="UI/TabContainer/Mesh" instance=ExtResource("1_s86y4")]
+layout_mode = 2
+tooltip_text = "Size of a mesh in meters"
+propertyName = "Mesh Size"
+propertyType = 1
+tooltipText = "Size of a mesh in meters"
+
+[node name="HSeparator2" type="HSeparator" parent="UI/TabContainer/Mesh"]
+layout_mode = 2
+
+[node name="MeshDetail" parent="UI/TabContainer/Mesh" instance=ExtResource("1_s86y4")]
+layout_mode = 2
+tooltip_text = "Subdivides the mesh in this many vertices horizontally and vertically"
+propertyName = "Mesh Detail"
+tooltipText = "Subdivides the mesh in this many vertices horizontally and vertically"
+
+[node name="Noise" type="VBoxContainer" parent="UI/TabContainer"]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 1
+
+[node name="NoiseOffset" parent="UI/TabContainer/Noise" instance=ExtResource("1_s86y4")]
+layout_mode = 2
+tooltip_text = "Offsets the world by this amount"
+propertyName = "Offset"
+propertyType = 2
+tooltipText = "Offsets the world by this amount"
+
+[node name="HSeparator11" type="HSeparator" parent="UI/TabContainer/Noise"]
+layout_mode = 2
+
+[node name="NoiseSeed" parent="UI/TabContainer/Noise" instance=ExtResource("1_s86y4")]
+layout_mode = 2
+tooltip_text = "Seed used to generate the world"
+propertyName = "Seed"
+tooltipText = "Seed used to generate the world"
+
+[node name="HSeparator10" type="HSeparator" parent="UI/TabContainer/Noise"]
+layout_mode = 2
+
+[node name="NoiseScale" parent="UI/TabContainer/Noise" instance=ExtResource("1_s86y4")]
+layout_mode = 2
+tooltip_text = "Scale of the noise, higher values zoom into the world"
+propertyName = "Scale"
+propertyType = 1
+tooltipText = "Scale of the noise, higher values zoom into the world"
+
+[node name="HSeparator9" type="HSeparator" parent="UI/TabContainer/Noise"]
+layout_mode = 2
+
+[node name="GradientRotation" parent="UI/TabContainer/Noise" instance=ExtResource("1_s86y4")]
+layout_mode = 2
+tooltip_text = "I'm not too sure myself what this does exactly"
+propertyName = "Gradient Rotation"
+propertyType = 1
+tooltipText = "I'm not too sure myself what this does exactly"
+
+[node name="HSeparator8" type="HSeparator" parent="UI/TabContainer/Noise"]
+layout_mode = 2
+
+[node name="Lacunarity" parent="UI/TabContainer/Noise" instance=ExtResource("1_s86y4")]
+layout_mode = 2
+tooltip_text = "Higher values increase the detail on the noise"
+propertyName = "Lacunarity"
+propertyType = 1
+tooltipText = "Higher values increase the detail on the noise"
+
+[node name="HSeparator7" type="HSeparator" parent="UI/TabContainer/Noise"]
+layout_mode = 2
+
+[node name="InitialAmplitude" parent="UI/TabContainer/Noise" instance=ExtResource("1_s86y4")]
+layout_mode = 2
+tooltip_text = "Initial amplitude for the FBM"
+propertyName = "Initial Amplitude"
+propertyType = 1
+tooltipText = "Initial amplitude for the FBM"
+
+[node name="HSeparator6" type="HSeparator" parent="UI/TabContainer/Noise"]
+layout_mode = 2
+
+[node name="AngularVariance" parent="UI/TabContainer/Noise" instance=ExtResource("1_s86y4")]
+layout_mode = 2
+tooltip_text = "Used to rotate the noise layers"
+propertyName = "Angular Variance"
+propertyType = 2
+tooltipText = "Used to rotate the noise layers"
+
+[node name="HSeparator5" type="HSeparator" parent="UI/TabContainer/Noise"]
+layout_mode = 2
+
+[node name="NoiseRotation" parent="UI/TabContainer/Noise" instance=ExtResource("1_s86y4")]
+layout_mode = 2
+tooltip_text = "base rotation for the noise, it's hard to describe what this does"
+propertyName = "Rotation"
+propertyType = 1
+tooltipText = "base rotation for the noise, it's hard to describe what this does"
+
+[node name="HSeparator4" type="HSeparator" parent="UI/TabContainer/Noise"]
+layout_mode = 2
+
+[node name="Octaves" parent="UI/TabContainer/Noise" instance=ExtResource("1_s86y4")]
+layout_mode = 2
+tooltip_text = "Number of iterations of the FBM, the higher the number the more detailed the generation"
+propertyName = "Octaves"
+tooltipText = "Number of iterations of the FBM, the higher the number the more detailed the generation"
+
+[node name="HSeparator3" type="HSeparator" parent="UI/TabContainer/Noise"]
+layout_mode = 2
+
+[node name="AmplitudeDecay" parent="UI/TabContainer/Noise" instance=ExtResource("1_s86y4")]
+layout_mode = 2
+tooltip_text = "Speed at which initial amplitude decays in each iteration of the FBM, values higher than 1 would make it grow instead"
+propertyName = "Amplitude decay"
+propertyType = 1
+tooltipText = "Speed at which initial amplitude decays in each iteration of the FBM, values higher than 1 would make it grow instead"
+
+[node name="HSeparator2" type="HSeparator" parent="UI/TabContainer/Noise"]
+layout_mode = 2
+
+[node name="FrequencyVarianceL" parent="UI/TabContainer/Noise" instance=ExtResource("1_s86y4")]
+layout_mode = 2
+tooltip_text = "TODO: add a tooltip"
+propertyName = "Frequency Variance Lower Bound"
+propertyType = 1
+
+[node name="HSeparator" type="HSeparator" parent="UI/TabContainer/Noise"]
+layout_mode = 2
+
+[node name="FrequencyVarianceU" parent="UI/TabContainer/Noise" instance=ExtResource("1_s86y4")]
+layout_mode = 2
+tooltip_text = "TODO: add a tooltip"
+propertyName = "Frequency Variance Upper Bound"
+propertyType = 1
+
+[node name="Terrain" type="VBoxContainer" parent="UI/TabContainer"]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 2
+
+[node name="TerrainHeight" parent="UI/TabContainer/Terrain" instance=ExtResource("1_s86y4")]
+layout_mode = 2
+tooltip_text = "Modifies the height of the terrain"
+propertyName = "Terrain Height"
+propertyType = 1
+tooltipText = "Modifies the height of the terrain"
+
+[node name="HSeparator5" type="HSeparator" parent="UI/TabContainer/Terrain"]
+layout_mode = 2
+
+[node name="TerrainOffset" parent="UI/TabContainer/Terrain" instance=ExtResource("1_s86y4")]
+layout_mode = 2
+tooltip_text = "Only the y component does anything. Modifies the height of the mesh"
+propertyName = "Offset"
+propertyType = 2
+tooltipText = "Only the y component does anything. Modifies the height of the mesh"
+
+[node name="HSeparator4" type="HSeparator" parent="UI/TabContainer/Terrain"]
+layout_mode = 2
+
+[node name="SlopeDamping" parent="UI/TabContainer/Terrain" instance=ExtResource("1_s86y4")]
+layout_mode = 2
+tooltip_text = "Modifies the slope for coloring purposes"
+propertyName = "Slope Damping"
+propertyType = 1
+tooltipText = "Modifies the slope for coloring purposes"
+
+[node name="HSeparator3" type="HSeparator" parent="UI/TabContainer/Terrain"]
+layout_mode = 2
+
+[node name="SlopeRange" parent="UI/TabContainer/Terrain" instance=ExtResource("1_s86y4")]
+layout_mode = 2
+tooltip_text = "A slope below the x component will be a low slope while one above y will be high slope"
+propertyName = "Slope Range"
+propertyType = 2
+tooltipText = "A slope below the x component will be a low slope while one above y will be high slope"
+
+[node name="HSeparator2" type="HSeparator" parent="UI/TabContainer/Terrain"]
+layout_mode = 2
+
+[node name="LowSlopeColor" parent="UI/TabContainer/Terrain" instance=ExtResource("1_s86y4")]
+layout_mode = 2
+tooltip_text = "Color to paint a low slope"
+propertyName = "Low Slope Color"
+propertyType = 3
+tooltipText = "Color to paint a low slope"
+
+[node name="HSeparator" type="HSeparator" parent="UI/TabContainer/Terrain"]
+layout_mode = 2
+
+[node name="HighSlopeColor" parent="UI/TabContainer/Terrain" instance=ExtResource("1_s86y4")]
+layout_mode = 2
+tooltip_text = "Color to paint a high slope"
+propertyName = "High Slope Color"
+propertyType = 3
+tooltipText = "Color to paint a high slope"
+
+[node name="Light" type="VBoxContainer" parent="UI/TabContainer"]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 3
+
+[node name="RaymarchedShadows" parent="UI/TabContainer/Light" instance=ExtResource("1_s86y4")]
+layout_mode = 2
+tooltip_text = "Enables raymerched shadows"
+propertyName = "Raymarched Shadows"
+propertyType = 4
+tooltipText = "Enables raymerched shadows"
+
+[node name="HSeparator4" type="HSeparator" parent="UI/TabContainer/Light"]
+layout_mode = 2
+
+[node name="SpecularPower" parent="UI/TabContainer/Light" instance=ExtResource("1_s86y4")]
+layout_mode = 2
+tooltip_text = "Higher values reduce the size of the specular highlight"
+propertyName = "Specular power"
+propertyType = 1
+tooltipText = "Higher values reduce the size of the specular highlight"
+
+[node name="HSeparator3" type="HSeparator" parent="UI/TabContainer/Light"]
+layout_mode = 2
+
+[node name="ShadowPrecision" parent="UI/TabContainer/Light" instance=ExtResource("1_s86y4")]
+layout_mode = 2
+tooltip_text = "How many steps to take when processing shadows"
+propertyName = "Shadow Precision"
+tooltipText = "How many steps to take when processing shadows"
+
+[node name="HSeparator2" type="HSeparator" parent="UI/TabContainer/Light"]
+layout_mode = 2
+
+[node name="ShadowStep" parent="UI/TabContainer/Light" instance=ExtResource("1_s86y4")]
+layout_mode = 2
+tooltip_text = "Size of each step when processing shadows"
+propertyName = "Shadow Step"
+propertyType = 1
+tooltipText = "Size of each step when processing shadows"
+
+[node name="HSeparator" type="HSeparator" parent="UI/TabContainer/Light"]
+layout_mode = 2
+
+[node name="ShadowPenumbra" parent="UI/TabContainer/Light" instance=ExtResource("1_s86y4")]
+layout_mode = 2
+tooltip_text = "If the light ray hitting a point is at this distance of an obstacle a penumbra will be drawn"
+propertyName = "Shadow Penumbra"
+propertyType = 1
+tooltipText = "If the light ray hitting a point is at this distance of an obstacle a penumbra will be drawn"
+
+[node name="Sky" type="VBoxContainer" parent="UI/TabContainer"]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 4
+
+[node name="SunPosition" parent="UI/TabContainer/Sky" instance=ExtResource("1_s86y4")]
+layout_mode = 2
+size_flags_vertical = 0
+tooltip_text = "Position of the sun in the sky"
+propertyName = "Sun Position"
+propertyType = 5
+tooltipText = "Position of the sun in the sky"
+
+[node name="MoonPosition" parent="UI/TabContainer/Sky" instance=ExtResource("1_s86y4")]
+layout_mode = 2
+size_flags_vertical = 0
+tooltip_text = "Position of the moon in the sky"
+propertyName = "Moon Position"
+propertyType = 5
+tooltipText = "Position of the moon in the sky"

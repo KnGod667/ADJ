@@ -1,0 +1,30 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://cnb2mpu7jcy1e"]
+
+[ext_resource type="Shader" path="res://shaders/plane.gdshader" id="1_5m35q"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_5m35q")
+shader_parameter/global_noise_offset = Vector2(0, 0)
+shader_parameter/_Seed = 0
+shader_parameter/_Scale = 1.0
+shader_parameter/_GradientRotation = 0.0
+shader_parameter/_Lacunarity = 1.0
+shader_parameter/_InitialAmplitude = 1.0
+shader_parameter/_AngularVariance = Vector2(0, 0)
+shader_parameter/_NoiseRotation = 0.0
+shader_parameter/_Octaves = 4
+shader_parameter/_AmplitudeDecay = 0.5
+shader_parameter/_FrequencyVarianceLowerBound = 0.0
+shader_parameter/_FrequencyVarianceUpperBound = 1.0
+shader_parameter/_TerrainHeight = 1.0
+shader_parameter/_Offset = Vector2(0, 0)
+shader_parameter/_SlopeDamping = 1.0
+shader_parameter/_SlopeRange = Vector2(1, 1)
+shader_parameter/_LowSlopeColor = Color(0, 1, 0, 1)
+shader_parameter/_HighSlopeColor = Color(0.545098, 0.270588, 0.0745098, 1)
+shader_parameter/enable_raymarched_shadows = false
+shader_parameter/specular_power = 64.0
+shader_parameter/shadow_precision = 12
+shader_parameter/shadow_step = 0.1
+shader_parameter/shadow_penumbra = 0.1
