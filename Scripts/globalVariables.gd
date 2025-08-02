@@ -2,6 +2,7 @@ extends Node
 
 signal terrain_property_changed
 signal sky_property_changed
+signal setup_finished
 
 var generationRadius : int = 2:
 	set(s):
@@ -118,3 +119,138 @@ var MoonPosition : Vector3 = Vector3.ZERO:
 	set(s):
 		MoonPosition = s
 		sky_property_changed.emit("MoonPosition",MoonPosition)
+
+var sun_color :Color:
+	set(s):
+		sun_color = s
+		sky_property_changed.emit("sun_color",sun_color)
+
+var sun_sunset_color : Color:
+	set(s):
+		sun_sunset_color = s
+		sky_property_changed.emit("sun_sunset_color",sun_sunset_color)
+
+var sun_size : float:
+	set(s):
+		sun_size = s
+		sky_property_changed.emit("sun_size",sun_size)
+
+var sun_blur : float:
+	set(s):
+		sun_blur = s
+		sky_property_changed.emit("sun_blur",sun_blur)
+
+var moon_color : Color:
+	set(s):
+		moon_color = s
+		sky_property_changed.emit("moon_color",moon_color)
+
+var moon_size : float:
+	set(s):
+		moon_size = s
+		sky_property_changed.emit("moon_size",moon_size)
+
+var moon_blur : float:
+	set(s):
+		moon_blur = s
+		sky_property_changed.emit("moon_blur",moon_blur)
+
+var day_top_color : Color:
+	set(s):
+		day_top_color = s
+		sky_property_changed.emit("day_top_color",day_top_color)
+
+var day_bottom_color : Color:
+	set(s):
+		day_bottom_color = s
+		sky_property_changed.emit("day_bottom_color",day_bottom_color)
+
+var sunset_top_color : Color:
+	set(s):
+		sunset_top_color = s
+		sky_property_changed.emit("sunset_top_color",sunset_top_color)
+
+var sunset_bottom_color : Color:
+	set(s):
+		sunset_bottom_color = s
+		sky_property_changed.emit("sunset_bottom_color",sunset_bottom_color)
+
+var night_top_color : Color:
+	set(s):
+		night_top_color = s
+		sky_property_changed.emit("night_top_color",night_top_color)
+
+var night_bottom_color : Color:
+	set(s):
+		night_bottom_color = s
+		sky_property_changed.emit("night_bottom_color",night_bottom_color)
+
+var horizon_color : Color:
+	set(s):
+		horizon_color = s
+		sky_property_changed.emit("horizon_color",horizon_color)
+
+var horizon_blur : float:
+	set(s):
+		horizon_blur = s
+		sky_property_changed.emit("horizon_blur",horizon_blur)
+
+var clouds_edge_color : Color:
+	set(s):
+		clouds_edge_color = s
+		sky_property_changed.emit("clouds_edge_color",clouds_edge_color)
+
+var clouds_top_color : Color:
+	set(s):
+		clouds_top_color = s
+		sky_property_changed.emit("clouds_top_color",clouds_top_color)
+
+var clouds_middle_color : Color:
+	set(s):
+		clouds_middle_color = s
+		sky_property_changed.emit("clouds_middle_color",clouds_middle_color)
+
+var clouds_bottom_color : Color:
+	set(s):
+		clouds_bottom_color = s
+		sky_property_changed.emit("clouds_bottom_color",clouds_bottom_color)
+
+var clouds_speed : float:
+	set(s):
+		clouds_speed = s
+		sky_property_changed.emit("clouds_speed",clouds_speed)
+
+var clouds_direction : float:
+	set(s):
+		clouds_direction = s
+		sky_property_changed.emit("clouds_direction",clouds_direction)
+
+var clouds_scale : float:
+	set(s):
+		clouds_scale = s
+		sky_property_changed.emit("clouds_scale",clouds_scale)
+
+var clouds_cutoff : float:
+	set(s):
+		clouds_cutoff = s
+		sky_property_changed.emit("clouds_cutoff",clouds_cutoff)
+
+var clouds_fuzziness : float:
+	set(s):
+		clouds_fuzziness = s
+		sky_property_changed.emit("clouds_fuzziness",clouds_fuzziness)
+
+var clouds_weight : float:
+	set(s):
+		clouds_weight = s
+		sky_property_changed.emit("clouds_weight",clouds_weight)
+
+var clouds_blur : float:
+	set(s):
+		clouds_blur = s
+		sky_property_changed.emit("clouds_blur",clouds_blur)
+
+var stars_speed : float:
+	set(s):
+		stars_speed = s
+		sky_property_changed.emit("stars_speed",stars_speed)

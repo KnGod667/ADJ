@@ -11,10 +11,29 @@ var propertyNamesDict = {"GenerationRadius":"generationRadius","MeshSize":"meshS
 						"SlopeRange":"slopeRange","LowSlopeColor":"lowSlopeColor","HighSlopeColor":"highSlopeColor",
 						"RaymarchedShadows":"RaymarchedShadows","SpecularPower":"specularPower","ShadowPrecision":"shadowPrecision","ShadowStep":"shadowStep",
 						"ShadowPenumbra":"shadowPenumbra","SunPosition":"SunPosition","MoonPosition":"MoonPosition"}
-
+@onready var tabContainer = $TabContainer
 func _ready() -> void:
 	if not GlobalVariables.is_node_ready():
 		await GlobalVariables.ready
+	on_setup_finished()
+	GlobalVariables.setup_finished.connect(on_setup_finished)
+	connect_children(tabContainer)
+
+func connect_children(node:Node):
+	if node is HBoxContainer:
+		node.value_changed.connect(property_updated)
+		return
+	for n in node.get_children():
+		connect_children(n)
+
+func property_updated(propertyName,new_value):
+	var propName = propertyName
+	if propertyNamesDict.has(propName):
+		propName = propertyNamesDict[propName]
+	GlobalVariables.set(propName,new_value)
+	pass
+
+func on_setup_finished():
 	$TabContainer/Mesh/GenerationRadius.value = GlobalVariables.generationRadius
 	$TabContainer/Mesh/MeshSize.value = GlobalVariables.meshSize
 	$TabContainer/Mesh/MeshDetail.value = GlobalVariables.detail
@@ -41,13 +60,32 @@ func _ready() -> void:
 	$TabContainer/Light/ShadowPrecision.value = GlobalVariables.shadowPrecision
 	$TabContainer/Light/ShadowStep.value = GlobalVariables.shadowStep
 	$TabContainer/Light/ShadowPenumbra.value = GlobalVariables.shadowPenumbra
-	$TabContainer/Sky/SunPosition.value = GlobalVariables.SunPosition
-	$TabContainer/Sky/MoonPosition.value = GlobalVariables.MoonPosition
-	for x in $TabContainer.get_children():
-		for n in x.get_children():
-			if n is HBoxContainer:
-				n.value_changed.connect(property_updated)
-	pass
-func property_updated(propertyName,new_value):
-	GlobalVariables.set(propertyNamesDict[propertyName],new_value)
-	pass
+	$TabContainer/Sky/TabContainer/Sun/SunPosition.value = GlobalVariables.SunPosition
+	$TabContainer/Sky/TabContainer/Sun/sun_color.value = GlobalVariables.sun_color
+	$TabContainer/Sky/TabContainer/Sun/sun_sunset_color.value = GlobalVariables.sun_sunset_color
+	$TabContainer/Sky/TabContainer/Sun/sun_size.value = GlobalVariables.sun_size
+	$TabContainer/Sky/TabContainer/Sun/sun_blur.value = GlobalVariables.sun_blur
+	$TabContainer/Sky/TabContainer/Moon/MoonPosition.value = GlobalVariables.MoonPosition
+	$TabContainer/Sky/TabContainer/Moon/moon_color.value = GlobalVariables.moon_color
+	$TabContainer/Sky/TabContainer/Moon/moon_size.value = GlobalVariables.moon_size
+	$TabContainer/Sky/TabContainer/Moon/moon_blur.value = GlobalVariables.moon_blur
+	$TabContainer/Sky/TabContainer/Sky/day_top_color.value = GlobalVariables.day_top_color
+	$TabContainer/Sky/TabContainer/Sky/day_bottom_color.value = GlobalVariables.day_bottom_color
+	$TabContainer/Sky/TabContainer/Sky/sunset_top_color.value = GlobalVariables.sunset_top_color
+	$TabContainer/Sky/TabContainer/Sky/sunset_bottom_color.value = GlobalVariables.sunset_bottom_color
+	$TabContainer/Sky/TabContainer/Sky/night_top_color.value = GlobalVariables.night_top_color
+	$TabContainer/Sky/TabContainer/Sky/night_bottom_color.value = GlobalVariables.night_bottom_color
+	$TabContainer/Sky/TabContainer/Horizon/horizon_color.value = GlobalVariables.horizon_color
+	$TabContainer/Sky/TabContainer/Horizon/horizon_blur.value = GlobalVariables.horizon_blur
+	$TabContainer/Sky/TabContainer/Clouds/clouds_edge_color.value = GlobalVariables.clouds_edge_color
+	$TabContainer/Sky/TabContainer/Clouds/clouds_top_color.value = GlobalVariables.clouds_top_color
+	$TabContainer/Sky/TabContainer/Clouds/clouds_middle_color.value = GlobalVariables.clouds_middle_color
+	$TabContainer/Sky/TabContainer/Clouds/clouds_bottom_color.value = GlobalVariables.clouds_bottom_color
+	$TabContainer/Sky/TabContainer/Clouds/clouds_speed.value = GlobalVariables.clouds_speed
+	$TabContainer/Sky/TabContainer/Clouds/clouds_direction.value = GlobalVariables.clouds_direction
+	$TabContainer/Sky/TabContainer/Clouds/clouds_scale.value = GlobalVariables.clouds_scale
+	$TabContainer/Sky/TabContainer/Clouds/clouds_cutoff.value = GlobalVariables.clouds_cutoff
+	$TabContainer/Sky/TabContainer/Clouds/clouds_fuzziness.value = GlobalVariables.clouds_fuzziness
+	$TabContainer/Sky/TabContainer/Clouds/clouds_weight.value = GlobalVariables.clouds_weight
+	$TabContainer/Sky/TabContainer/Clouds/clouds_blur.value = GlobalVariables.clouds_blur
+	$TabContainer/Sky/TabContainer/Stars/stars_speed.value = GlobalVariables.stars_speed

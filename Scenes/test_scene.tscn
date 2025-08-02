@@ -27,9 +27,35 @@ script = ExtResource("1_50ct6")
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_buypi")
 script = ExtResource("4_4edhu")
+sun_color = Color(0.996078, 0.913725, 0.364706, 1)
+sun_sunset_color = Color(1, 0, 0, 1)
+sun_size = 0.2
+sun_blur = 0.593
+moon_color = Color(1, 1, 1, 1)
+moon_size = 0.2
+moon_blur = 0.1
+day_top_color = Color(0.101961, 0.6, 1, 1)
+day_bottom_color = Color(0.4, 0.8, 1, 1)
+sunset_top_color = Color(0.701961, 0.74902, 1, 1)
+sunset_bottom_color = Color(1, 0.501961, 0.701961, 1)
+night_top_color = Color(0.0196078, 0, 0.0392157, 1)
+night_bottom_color = Color(0.101961, 0, 0.2, 1)
+horizon_color = Color(0, 0.701961, 0.8, 1)
+horizon_blur = 0.05
+clouds_edge_color = Color(0.8, 0.8, 0.980392, 1)
+clouds_top_color = Color(1, 1, 1, 1)
+clouds_middle_color = Color(0.921569, 0.921569, 0.980392, 1)
+clouds_bottom_color = Color(0.831373, 0.831373, 0.941176, 1)
+clouds_speed = 6.44
+clouds_direction = 0.5
+clouds_scale = 1.0
+clouds_cutoff = 0.3
+clouds_fuzziness = 0.5
+clouds_blur = 0.25
+stars_speed = 1.0
 
 [node name="Sun" type="DirectionalLight3D" parent="."]
-transform = Transform3D(0.855083, 0.172521, 0.488948, 0.36246, -0.87321, -0.325771, 0.370748, 0.455786, -0.809201, 4.03407, 5.54587, 2.68282)
+transform = Transform3D(0.855084, 0.172523, 0.488945, -0.0926923, -0.87696, 0.471542, 0.510139, -0.448529, -0.733879, 4.03407, 5.54587, 2.68282)
 light_color = Color(0.997727, 0.913765, 0.363679, 1)
 light_angular_distance = 0.5
 
@@ -52,7 +78,6 @@ octaves = 6
 slopeRange = Vector2(0.28, 1)
 lowSlopeColor = Color(0.994071, 0.745382, 0.845383, 1)
 highSlopeColor = Color(0.406032, 0.205523, 4.81308e-08, 1)
-RaymarchedShadows = true
 specularPower = 240.0
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]

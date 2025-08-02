@@ -212,6 +212,7 @@ func update_global_state():
 	GlobalVariables.slopeRange = slopeRange
 	GlobalVariables.specularPower = specularPower
 	GlobalVariables.terrainHeight = terrainHeight
+	GlobalVariables.setup_finished.emit()
 
 func on_global_state_changed(propertyName,propertyValue):
 	set(propertyName,propertyValue)

@@ -35,6 +35,10 @@ layout_mode = 2
 size_flags_horizontal = 1
 size_flags_vertical = 1
 
+[node name="ColorPickerButton" type="ColorPickerButton" parent="Camera2D/CanvasLayer"]
+offset_right = 8.0
+offset_bottom = 8.0
+
 [node name="TextureRect" type="TextureRect" parent="."]
 offset_right = 40.0
 offset_bottom = 40.0

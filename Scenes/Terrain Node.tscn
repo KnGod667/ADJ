@@ -6,8 +6,8 @@
 [sub_resource type="PlaneMesh" id="PlaneMesh_hq72p"]
 material = ExtResource("2_pr11c")
 size = Vector2(10, 10)
-subdivide_width = 150
-subdivide_depth = 150
+subdivide_width = 250
+subdivide_depth = 250
 
 [node name="TerrainChunk" type="Node3D"]
 script = ExtResource("1_pr11c")

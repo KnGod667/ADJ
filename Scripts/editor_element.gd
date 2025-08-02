@@ -14,11 +14,6 @@ signal value_changed
 		if is_node_ready():
 			update_property_type()
 
-@export_multiline var tooltipText:String:
-	set(v):
-		tooltipText = v
-		tooltip_text = tooltipText
-
 var value:
 	set(v):
 		value = v

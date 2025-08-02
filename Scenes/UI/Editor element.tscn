@@ -10,8 +10,8 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 8
+tooltip_text = "TODO: add a tooltip"
 script = ExtResource("1_rnb4p")
-tooltipText = "TODO: add a tooltip"
 
 [node name="PropertyName" type="Label" parent="."]
 layout_mode = 2
